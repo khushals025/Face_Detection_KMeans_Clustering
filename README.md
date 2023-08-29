@@ -3,8 +3,8 @@
 
 ## Table of Contents
 - [Introduction](#introduction)
-- [Dependencies](#dependencies)
 - [Dataset](#dataset)
+- [Dependencies](#dependencies)
 - [Face Detection](#face-detection)
 - [K-Means Clustering Algorithm](#k-means-clustering-algorithm)
 - [Silhouette Analysis](#silhouette-analysis)
@@ -14,6 +14,9 @@
 
 ## 1. Introduction
 This repository explains the process of face detection using haar-cascade classifier and then applying clustering algorithm to form clusters, also exploring different distance metrics and employing Silhouette Analysis for optimal clustering.
+
+## 2. Dataset 
+
 
 ## 3. Dependencies
 Following libraries were used to cary out this project 
@@ -190,8 +193,42 @@ print(img_arry.shape)
 
 The way kmeans algorithm works is as follows:
 - Specify number of clusters K.
-- Initialize centroids by first shuffling the dataset and then randomly selecting K data points for the centroids without replacement.
+- Initialize centroids by first shuffling the dataset and then randomly selecting K data points for the centroids(image vector) without replacement.
+
+```bash
+def kmeans(data, k, max_iterations=100, tolerance=1e-4):
+    centroids = data[np.random.choice(data.shape[0], k, replace=False)]
+    prev_centroids = centroids.copy()
+    distances = np.zeros((data.shape[0], k))
+```
+
+
 - Keep iterating until there is no change to the centroids. i.e assignment of data points to clusters isn’t changing.
+
+```bash
+
+
+data.shape=(num_of_images, 224*224)
+centroids = 
+ for _ in range(max_iterations):
+        for i, c in enumerate(centroids):
+            distances[:, i] = np.linalg.norm(data - c, axis=1)
+        
+        labels = np.argmin(distances, axis=1) #This indicates the index of the closest centroid for each data point.
+# The axis=1 parameter specifies that the minimum value should be found along the rows.
+        for i in range(k):
+            if len(data[labels == i]) > 0:
+                centroids[i] = np.mean(data[labels == i], axis=0) # mean of all data points in 1 cluster 
+
+        if np.linalg.norm(centroids - prev_centroids) < tolerance:  # update centroid 
+            break
+
+        prev_centroids = centroids.copy()
+
+    return centroids, labels
+```
+
+
 - Compute the sum of the squared distance between data points and all centroids.
 - Assign each data point to the closest cluster (centroid).
 - Compute the centroids for the clusters by taking the average of the all data points that belong to each cluster.
@@ -240,7 +277,9 @@ considering 2 vectoes A and B in 2-D
   <img src="https://miro.medium.com/v2/resize:fit:1400/1*LfW66-WsYkFqWc4XYJbEJg.png" alt="Image Alt" width="300"/>
 </p>
 
-
+- (A . B) is the dot product of vectors A and B.
+- ||A|| is the Euclidean norm (magnitude) of vector A.
+- ||B|| is the Euclidean norm (magnitude) of vector B.
 
 
 
