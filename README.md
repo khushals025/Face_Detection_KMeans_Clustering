@@ -83,7 +83,7 @@ what if our input image has faces smaller or bigger than what was used in traini
 
 
 <div align="center">
-  <img src="https://waltpeter.github.io/open-cv-basic/Files/pyramid.png" alt = "Image Alt" width = "300'/>
+  <img src="https://waltpeter.github.io/open-cv-basic/Files/pyramid.png" alt = "Image Alt" width = "300'>
 </div>
 
 
