@@ -15,7 +15,7 @@
 ## 1. Introduction
 This repository explains the process of face detection using haar-cascade classifier and then applying clustering algorithm to form clusters, also exploring different distance metrics and employing Silhouette Analysis for optimal clustering.
 
-## 2. Dependencies
+## 3. Dependencies
 Following libraries were used to cary out this project 
 
 - Face Detection and k-mean from scratch
@@ -38,3 +38,19 @@ from sklearn.metrics import silhouette_samples, silhouette_score
 from PIL import Image
 ```
 
+### 4. Face Detection
+
+
+<div align="center">
+  <img src="https://i.makeagif.com/media/2-19-2016/8Z5TMz.gif" alt="Image Alt Text" width ="300">
+</div>
+
+### 5. K-Means Clustering
+
+### 6. Silhouette Analysis
+
+### 7. Clusters
+
+### 8. Results
+
+### 9. Future Scope
