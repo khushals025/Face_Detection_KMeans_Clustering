@@ -46,13 +46,18 @@ from PIL import Image
 
 - Basically for face detection, the classifier looks for the most relevant features on the face such as eyes, nose, lips, forehead, eyebrows because we know that although people have different looks, these features are in the similar positions on the face.
   
-- input image is given to the classifier, it compares the Haar Features from the xml file and applies it to the input image. If it passes through all the stages of haar feature comparison, then it’s a face, else not.
+- input image in Gray-Scale is given to the classifier, it compares the Haar Features from the xml file and applies it to the input image. If it passes through all the stages of haar feature comparison, then it’s a face, else not.
 - For the ideal case, this difference between the average of black and white pixel values is 1. Therefore, for the real image, the closer this difference to 1, the more likely we have found a Haar feature.
 
 <div align="center">
   <img src= "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*GD9ZE_j8WpRPewsZfTUKww.jpeg" alt = "Alt Image" width = "700">
 </div>
 
+#### 4.2 Scale Factor
+
+<div align="center">
+  <img src="https://miro.medium.com/v2/resize:fit:1400/1*pOZ9-EqqqZAn0B3uUOOrRw.gif" alt="Image Alt" width="500">
+</div>
 
 #### 4.2 Integral Image
 #### 4.3 Bounding Box 
