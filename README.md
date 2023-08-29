@@ -87,9 +87,8 @@ what if our input image has faces smaller or bigger than what was used in traini
 
 
  
+
 - A sliding window is a rectangular region that shifts around the whole image(pixel-by-pixel) at each scale. Each time the window shifts, the window region is applied to the classifier and detects whether that region has Haar features of a face.
-
-
 
 <p align="left"><img src="https://miro.medium.com/v2/resize:fit:1200/format:webp/1*2AEkrXCUSpKkYQxjg8lugQ.jpeg" alt="Image Alt" width= "450"/>&nbsp;&nbsp;<img src="https://miro.medium.com/v2/resize:fit:1400/1*pOZ9-EqqqZAn0B3uUOOrRw.gif" alt="Image Alt" width="450"/>
 
@@ -108,7 +107,7 @@ for i in img_path:
 ```
 
 
-#### 4.3 Bounding Box 
+#### 4.5 Bounding Box 
 
 - After detecting faces created bounding box over the face
 - here, (x,y,w,h) are x-coordinate, y-coordinate of botom left corner of the box. h is height and w is width of the bounding box.
@@ -131,6 +130,8 @@ for (x_, y_, w, h) in faces:
 ```
   
 ### 5. K-Means Clustering
+
+
 
 ### 6. Silhouette Analysis
 
