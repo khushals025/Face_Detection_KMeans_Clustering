@@ -74,6 +74,8 @@ face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_fronta
 
 
 #### 4.3 Scale Factor and Sliding Window
+
+
 Since the classifier model was trained with the fixed face size images which can be seen in the xml file. It can detect faces with the same size which was used during the training.
 
 what if our input image has faces smaller or bigger than what was used in training?
@@ -91,7 +93,12 @@ what if our input image has faces smaller or bigger than what was used in traini
  
 - A sliding window is a rectangular region that shifts around the whole image(pixel-by-pixel) at each scale. Each time the window shifts, the window region is applied to the classifier and detects whether that region has Haar features of a face.
 
-<p align="left"><img src="https://miro.medium.com/v2/resize:fit:1200/format:webp/1*2AEkrXCUSpKkYQxjg8lugQ.jpeg" alt="Image Alt" width= "450"/>&nbsp;&nbsp;<img src="https://miro.medium.com/v2/resize:fit:1400/1*pOZ9-EqqqZAn0B3uUOOrRw.gif" alt="Image Alt" width="450"/>
+<p align="left">
+  <img src="https://miro.medium.com/v2/resize:fit:1200/format:webp/1*2AEkrXCUSpKkYQxjg8lugQ.jpeg" alt="Image Alt" width="450"/>
+  &nbsp;&nbsp;
+  <img src="https://miro.medium.com/v2/resize:fit:1400/1*pOZ9-EqqqZAn0B3uUOOrRw.gif" alt="Image Alt" width="450"/>
+</p>
+
 
 #### 4.4 Minimum Neighbours
 
@@ -198,8 +205,31 @@ The way kmeans algorithm works is as follows:
 - Assign each data point to the closest cluster (centroid).
 - Compute the centroids for the clusters by taking the average of the all data points that belong to each cluster.
 
-```bash
 
+in this project I have used the following distance metric:
+
+- Euclidian distance
+
+```bash
+# Calculate distances between data points and centroids using L1 Norm( Euclidean distnce)
+distances = np.linalg.norm(data[:, np.newaxis] - centroids, axis=2)
+```
+
+- Manhattan Distance
+
+```bash
+#Calculate distances between data points and centroids using Manhattan distance 
+distances = np.sum(np.abs(data[:, np.newaxis] - centroids), axis=2)
+```
+
+- Cosine Similarity
+
+```bash
+# Calculate distances between data points and centroids using cosine similarity
+distances = np.zeros((data.shape[0], k))
+for i in range(k):
+  distances = 1 - cosine_similarity(data.reshape(data.shape[0], -1), centroids[i].reshape(1, -1))
+```
 
 
 ### 6. Silhouette Analysis
