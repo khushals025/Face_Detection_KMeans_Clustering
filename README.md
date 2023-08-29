@@ -53,9 +53,13 @@ from PIL import Image
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 ```
 
+
+
 <div align="center">
   <img src= "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*GD9ZE_j8WpRPewsZfTUKww.jpeg" alt = "Alt Image" width = "700">
 </div>
+
+
 
 #### 4.2 Scale Factor and Sliding Window
 Since the classifier model was trained with the fixed face size images which can be seen in the xml file. It can detect faces with the same size which was used during the training.
@@ -65,11 +69,15 @@ what if our input image has faces smaller or bigger than what was used in traini
 - Downsize or scale the image according to training
 - Scaling factor of 1.3 is appropriate to solve this issue
 
+
+
 <p align="center">&nbsp;<img src="https://waltpeter.github.io/open-cv-basic/Files/pyramid.png" alt = "Image Alt" width = "300'/>
 
 
  
 - A sliding window is a rectangular region that shifts around the whole image(pixel-by-pixel) at each scale. Each time the window shifts, the window region is applied to the classifier and detects whether that region has Haar features of a face.
+
+
 
 <p align="left"><img src="https://miro.medium.com/v2/resize:fit:1200/format:webp/1*2AEkrXCUSpKkYQxjg8lugQ.jpeg" alt="Image Alt" width= "450"/>&nbsp;&nbsp;<img src="https://miro.medium.com/v2/resize:fit:1400/1*pOZ9-EqqqZAn0B3uUOOrRw.gif" alt="Image Alt" width="450"/>
 
