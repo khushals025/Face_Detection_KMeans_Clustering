@@ -60,8 +60,20 @@ face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_fronta
 </div>
 
 
+#### 4.2 Integral Image
 
-#### 4.2 Scale Factor and Sliding Window
+- Haar-like features involve rectangular areas with specific pixel value differences, which are calculated by subtracting the sum of pixel values in one region from the sum of pixel values in another region.
+- This process involves multiple additions and subtractions. If these calculations were performed directly on the original image for every possible position and scale, it would be computationally expensive and slow.
+-  The integral image enables quick computation of the sum of pixel values in any rectangular region with just four lookups, regardless of the region's size.
+
+<div align="center">
+  <img src="https://miro.medium.com/v2/resize:fit:1400/1*HhO9vGKpbx9p8x7uS49v-g.png" alt="Image Alt" width = "700">
+</div>
+
+
+
+
+#### 4.3 Scale Factor and Sliding Window
 Since the classifier model was trained with the fixed face size images which can be seen in the xml file. It can detect faces with the same size which was used during the training.
 
 what if our input image has faces smaller or bigger than what was used in training?
@@ -81,10 +93,11 @@ what if our input image has faces smaller or bigger than what was used in traini
 
 <p align="left"><img src="https://miro.medium.com/v2/resize:fit:1200/format:webp/1*2AEkrXCUSpKkYQxjg8lugQ.jpeg" alt="Image Alt" width= "450"/>&nbsp;&nbsp;<img src="https://miro.medium.com/v2/resize:fit:1400/1*pOZ9-EqqqZAn0B3uUOOrRw.gif" alt="Image Alt" width="450"/>
 
-#### 4.3 Minimum Neighbours
+#### 4.4 Minimum Neighbours
 
 -Since the object detection works in the combination of the image pyramid (multi-scaling) and sliding window, we get multiple true outputs for a single region of the face. These true outputs are the window region which satisfies the Haar features (could be actual face area or a non-face area taken into consideration).
 - minNeighbor is the threshold value for the number of true outputs required to detect a face.
+- with trial and error 5 was best suited for this task.
 
 ```bash
 for i in img_path:
@@ -94,9 +107,28 @@ for i in img_path:
         faces = face_cascade.detectMultiScale(gray, scaleFactor=1.3, minNeighbors=5)
 ```
 
-#### 4.2 Integral Image
+
 #### 4.3 Bounding Box 
 
+- After detecting faces created bounding box over the face
+- here, (x,y,w,h) are x-coordinate, y-coordinate of botom left corner of the box. h is height and w is width of the bounding box.
+- Cropped the faces and saved to a folder path
+- resized to (224X224)
+
+```bash
+for (x_, y_, w, h) in faces:
+            #creating bounding box over the face detected 
+            face_detect = cv2.rectangle(img, (x_, y_), (x_ + w, y_ + h), (255, 0, 255), 2)
+            roi_gray = gray[y_:y_ + h, x_:x_ + w]
+            roi_color = img[y_:y_ + h, x_:x_ + w]
+            # resize all images to 224x244
+            resized_image = cv2.resize(roi_gray, size)
+            resized_img.append(resized_image)
+            # save cropped image
+            filename = os.path.splitext(os.path.basename(i))[0]
+            save_path = os.path.join("/Users/khushal/Desktop/Spring 2023/CVIP/cropped_images", filename + '_cropped.jpg')
+            cv2.imwrite(save_path, resized_image)
+```
   
 ### 5. K-Means Clustering
 
