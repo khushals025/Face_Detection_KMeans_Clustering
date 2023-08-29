@@ -40,11 +40,9 @@ from PIL import Image
 
 ### 4. Face Detection
 
-
-<div align="center">
-  <img src="https://i.makeagif.com/media/2-19-2016/8Z5TMz.gif" alt="Image Alt Text" width ="300">
-</div>
-
+<p align="left"><img src="https://miro.medium.com/v2/resize:fit:1156/format:webp/1*XX8WqHo0lyrgZfTTRQ3ESQ.jpeg" alt="haarcascade" width="400"/
+  >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://lh4.googleusercontent.com/XCtD8cPcylJbGX7HBGgmONbC-JivQWdqKhvc7kimMd7YsHz7yDTQENv37DPKI2xlA6Wph_JGLrMjnOm0HDqNfo-_I6ybCUu_8eD9jSemc3lwUPuiIvDzDC3msktpBEk-QmOygt_MUzWF1WBf" alt="aws" width="400" /> 
+  
 ### 5. K-Means Clustering
 
 ### 6. Silhouette Analysis
