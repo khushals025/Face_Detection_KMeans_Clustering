@@ -201,6 +201,14 @@ in this project I have used the following distance metric:
 
 - Euclidian distance
 
+  
+<p align="left">
+  <img src="https://miro.medium.com/v2/resize:fit:552/format:webp/1*SiHuDCt6CI9JkS2EQ4kyKg.png" alt="Image Alt" width="100"/>
+  &nbsp;&nbsp;
+  <img src="https://miro.medium.com/v2/resize:fit:688/format:webp/1*YJidaDq5IS3KvYclS_vxgQ@2x.png" alt="Image Alt" width="200"/>
+</p>
+
+
 ```bash
 # Calculate distances between data points and centroids using L1 Norm( Euclidean distnce)
 distances = np.linalg.norm(data[:, np.newaxis] - centroids, axis=2)
@@ -208,14 +216,37 @@ distances = np.linalg.norm(data[:, np.newaxis] - centroids, axis=2)
 
 - Manhattan Distance
 
+<p align="left">
+  <img src="https://miro.medium.com/v2/resize:fit:416/format:webp/1*uNpDt3wDqCJ1CpTOq2IuYA.png" alt="Image Alt" width="100"/>
+  &nbsp;&nbsp;
+  <img src="https://miro.medium.com/v2/resize:fit:576/format:webp/1*nwDjnMf5fby0m7dvhXxfpA@2x.png" alt="Image Alt" width="200"/>
+</p>
+
+
+
+
 ```bash
 #Calculate distances between data points and centroids using Manhattan distance 
 distances = np.sum(np.abs(data[:, np.newaxis] - centroids), axis=2)
 ```
 
 - Cosine Similarity
+  
+considering 2 vectoes A and B in 2-D
+  
+<p align="left">
+  <img src="https://miro.medium.com/v2/resize:fit:504/format:webp/1*H6k_h3YjZPGk5U3N21bpXg.png" alt="Image Alt" width="100"/>
+  &nbsp;&nbsp;
+  <img src="https://miro.medium.com/v2/resize:fit:1400/1*LfW66-WsYkFqWc4XYJbEJg.png" alt="Image Alt" width="300"/>
+</p>
+
+
+
+
 
 ```bash
+# here k is the num of centroids 
+from sklearn.metrics.pairwise import cosine_similarity
 # Calculate distances between data points and centroids using cosine similarity
 distances = np.zeros((data.shape[0], k))
 for i in range(k):
