@@ -82,12 +82,13 @@ what if our input image has faces smaller or bigger than what was used in traini
 - Scaling factor of 1.3 is appropriate to solve this issue
 
 
+<div align="center">
+  <img src="https://waltpeter.github.io/open-cv-basic/Files/pyramid.png" alt = "Image Alt" width = "300'/>
+</div>
 
-<p align="center">&nbsp;<img src="https://waltpeter.github.io/open-cv-basic/Files/pyramid.png" alt = "Image Alt" width = "300'/>
 
 
  
-
 - A sliding window is a rectangular region that shifts around the whole image(pixel-by-pixel) at each scale. Each time the window shifts, the window region is applied to the classifier and detects whether that region has Haar features of a face.
 
 <p align="left"><img src="https://miro.medium.com/v2/resize:fit:1200/format:webp/1*2AEkrXCUSpKkYQxjg8lugQ.jpeg" alt="Image Alt" width= "450"/>&nbsp;&nbsp;<img src="https://miro.medium.com/v2/resize:fit:1400/1*pOZ9-EqqqZAn0B3uUOOrRw.gif" alt="Image Alt" width="450"/>
@@ -146,6 +147,10 @@ img_arry = np.array(flatten_img)
 
 
 ```
+
+#### 5.1 Dealing with Outliers
+
+
 - K-Means clustering is an unsupervised learning algorithm which aims to partition n observations into k clusters in which each observation belongs to the cluster with the nearest centroid. The algorithm aims to minimize the squared Euclidean distances or Manhattan distance between the observation and the centroid of cluster to which it belongs.
 - But It is sensitive to outliers.
 - Since, mean is also sensitive to outliers we will use median
@@ -181,6 +186,8 @@ print(img_arry.shape)
 
 - Note: tilde (~) symbol is used as a logical NOT operator. It's used to negate a Boolean array, meaning it flips the values of True to False and False to True.
 
+- Followed by Normalizing the image array without outliers.
+
 #### K-Means Algorithm 
 
 The way kmeans algorithm works is as follows:
@@ -190,6 +197,10 @@ The way kmeans algorithm works is as follows:
 - Compute the sum of the squared distance between data points and all centroids.
 - Assign each data point to the closest cluster (centroid).
 - Compute the centroids for the clusters by taking the average of the all data points that belong to each cluster.
+
+```bash
+
+
 
 ### 6. Silhouette Analysis
 
