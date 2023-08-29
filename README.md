@@ -131,7 +131,65 @@ for (x_, y_, w, h) in faces:
   
 ### 5. K-Means Clustering
 
+- After Detecting faces the main task is to cluster images with respect to the person.
+- To use images we need to convert them into numpy arrays (Flatten image matrix [224X224]).
 
+```bash 
+#Flattening Images 
+flatten_img = []
+for i in x:
+    flatten_img.append(i.flatten())
+
+#print(type(flatten_img))
+img_arry = np.array(flatten_img)
+
+
+
+```
+- K-Means clustering is an unsupervised learning algorithm which aims to partition n observations into k clusters in which each observation belongs to the cluster with the nearest centroid. The algorithm aims to minimize the squared Euclidean distances or Manhattan distance between the observation and the centroid of cluster to which it belongs.
+- But It is sensitive to outliers.
+- Since, mean is also sensitive to outliers we will use median
+
+
+Median absolute deviation is a robust way to identify outliers.
+The median absolute deviation formula is:
+
+<div align="center">
+  <img src="https://w2.influxdata.com/wp-content/uploads/MAD-n-01.svg" alt="Image Alt" width="300">
+</div>
+
+where, 
+- m is the median of a dataset; and
+- Xi is the dataset in question.
+
+If the value is greater than our threshold, then we have an anomalous point. 
+
+<div align="center">
+  <img src="https://w2.influxdata.com/wp-content/uploads/more-than-threshold-01.svg" alt="Image Alt" width="300">
+</div>
+
+  
+```bash
+#removing outliers 
+median_abs_deviation = np.median(np.abs(img_arry - np.median(img_arry)), axis=0)
+outliers = np.abs(img_arry - np.median(img_arry))/median_abs_deviation < 4
+img_array = img_arry[~outliers] #---> image array except for outliers
+print(len(img_arry))
+print(img_arry.shape)
+
+```
+
+- Note: tilde (~) symbol is used as a logical NOT operator. It's used to negate a Boolean array, meaning it flips the values of True to False and False to True.
+
+#### K-Means Algorithm 
+
+The way kmeans algorithm works is as follows:
+- Specify number of clusters K.
+- Initialize centroids by first shuffling the dataset and then randomly selecting K data points for the centroids without replacement.
+- Keep iterating until there is no change to the centroids. i.e assignment of data points to clusters isn’t changing.
+- Compute the sum of the squared distance between data points and all centroids.
+- Assign each data point to the closest cluster (centroid).
+- Compute the centroids for the clusters by taking the average of the all data points that belong to each cluster.
 
 ### 6. Silhouette Analysis
 
