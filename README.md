@@ -322,8 +322,13 @@ plt.xlabel('Values of K')
 plt.ylabel('Silhouette score') 
 plt.title('Silh
 ```
+<div align="center">
+  <img src="https://github.com/khushals025/Face_Detection_KMeans_Clustering/blob/main/Silhouette%20Score.png?raw=true" alt="Image Alt" width="600">
+</div>
 
+- Therefore chose 8 clusters
 
+  
 ### 7. Clusters
 
 ### 8. Results
