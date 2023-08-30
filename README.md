@@ -324,7 +324,6 @@ plt.title('Silh
 ```
 
 
-
 ### 7. Clusters
 
 ### 8. Results
