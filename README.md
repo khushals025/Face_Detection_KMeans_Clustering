@@ -1,4 +1,7 @@
 # Face Detection and K-Means Clustering 
+<div align="center">
+  <img src="https://github.com/khushals025/Face_Detection_KMeans_Clustering/blob/main/cluster_k-means_library/Cluster%201.png?raw=true" alt="Image Alt" width=500">
+</div>
 
 
 ## Table of Contents
